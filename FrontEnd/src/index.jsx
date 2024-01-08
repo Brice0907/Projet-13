@@ -4,6 +4,8 @@ import './styles/index.css';
 import Root from './root/root.jsx';
 import Home from './pages/home/home.jsx';
 import Login from './pages/login/login.jsx';
+import Profile from './pages/profile/profile.jsx';
+import Transaction from './pages/transaction/transaction.jsx';
 
 const router = createBrowserRouter([
   {
@@ -15,8 +17,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/sign-in',
+        path: '/login',
         element: <Login />,
+      },
+      {
+        path: '/profil',
+        element: <Profile />,
+      },
+      {
+        path: '/transaction',
+        element: <Transaction />,
       }
     ],
   },
