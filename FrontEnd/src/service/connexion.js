@@ -1,5 +1,3 @@
-import { userProfile } from "./profile";
-
 export const userLogin = async (email, password) => {
 
     const body = {
@@ -18,7 +16,7 @@ export const userLogin = async (email, password) => {
         });
         const userData = await response.json();
 
-        userProfile(userData)
+        return userData.body.token;
     } catch (error) {
         console.log(error);
     }

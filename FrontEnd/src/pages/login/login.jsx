@@ -1,15 +1,26 @@
 import './style/login.css';
 import { useState } from 'react';
 import { userLogin } from "../../service/connexion.js";
+import { userProfile } from '../../service/profile.js';
 
 export default function Login() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    function sending(e) {
+    async function sending(e) {
         e.preventDefault()
-        userLogin(username, password)
+        try {
+            const token = await userLogin(username, password)
+            const profil = await userProfile(token)
+            console.log("C'est le profil", profil);
+            console.log(typeof profil);
+            if (typeof profil === 'object' && profil !== null) {
+                window.location.replace('/profil');
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return <div className='main bg-dark'>
